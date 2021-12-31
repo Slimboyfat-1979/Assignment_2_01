@@ -33,7 +33,7 @@ namespace Assignment_2_01
             //control.customerList.Add(new Customer(customerName));
             
             //Fix to get the name and id of the person just added;
-            //MessageBox.Show("Customer: " + Convert.ToString(control.customerList[IdNumber].getID()) + " " + control.customerList[IdNumber].Name + " Added");
+            MessageBox.Show("Customer: " + Convert.ToString(control.customerList[IdNumber-1].getID()) + " " + control.customerList[IdNumber-1].Name + " Added");
             this.Hide();
             form3.getForm3().DisplayCustomers();
             form3.Show();
