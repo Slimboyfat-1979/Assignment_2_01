@@ -49,6 +49,17 @@ namespace Assignment_2_01
             customerListBox.SelectedItem = 0;
         }
 
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int selectedID = customerListBox.SelectedIndex;
+            Customer temp = control.customerList[selectedID];
+            Form5 form5 = new Form5();
+            form5.createTempCustomer(temp);
+            
+            form5.Show();
+
+
+            //MessageBox.Show(Convert.ToString(selectedID));
+        }
     }
 }

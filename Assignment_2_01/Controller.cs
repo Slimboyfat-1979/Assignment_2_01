@@ -10,5 +10,17 @@ namespace Assignment_2_01
     {
         //List to hold customers that are created
         public List<Customer> customerList = new List<Customer>();
+
+        public void updateCustomerName(Customer c, string name)
+        {
+            if (customerList.Contains(c))
+            {
+                c.Name = name;
+            }
+            else
+            {
+                
+            }
+        }
     }
 }
