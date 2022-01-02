@@ -20,11 +20,13 @@ namespace Assignment_2_01
         {
             return control;
         }
+
+        
         public Form3()
         {
             //Figure out how to read customer only once
             InitializeComponent();
-            ReadCustomers(getController());
+            //ReadCustomers(getController());
             //DisplayCustomers();
         }
 
@@ -68,8 +70,14 @@ namespace Assignment_2_01
         {
             int selectedID = customerListBox.SelectedIndex;
             Customer temp = control.customerList[selectedID];
+            
+            //Customer temp = control.customerList[selectedID];
+            //control.addTempCustomer(temp, temp.Name);
+            //form5.createTempCustomer(temp);
+            //control.addTempCustomer(temp);
             Form5 form5 = new Form5();
             form5.createTempCustomer(temp);
+
             this.Hide();
             form5.Show();
 
@@ -77,8 +85,15 @@ namespace Assignment_2_01
             //MessageBox.Show(Convert.ToString(selectedID));
         }
 
+        //Button to remove customer
         private void button3_Click(object sender, EventArgs e)
         {
+            Form6 form6 = new Form6();
+            form6.Show();
+            int selectedId = customerListBox.SelectedIndex;
+            Customer temp = control.customerList[selectedId];
+            this.Hide();
+            
             
         }
     }
