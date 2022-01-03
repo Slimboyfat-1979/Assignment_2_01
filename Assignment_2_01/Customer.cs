@@ -12,7 +12,6 @@ namespace Assignment_2_01
     public class Customer
     {
         public List<Customer> cusomerList = new List<Customer>();
-        //Queue<int> IdQueue = new Queue<int>();
 
         private static int nextID = 1;
         private int ID;
@@ -29,7 +28,6 @@ namespace Assignment_2_01
             this.Name = name;
             ID = nextID;
             nextID++;
-            
         }
 
     }

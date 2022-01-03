@@ -13,7 +13,6 @@ namespace Assignment_2_01
     public partial class Form2 : Form1
     {
        public static Form3 menuForm = new Form3();
-        private Controller c = Form3.getController();
         public Form2()
         {
             InitializeComponent();
@@ -27,7 +26,6 @@ namespace Assignment_2_01
         private void button1_Click(object sender, EventArgs e)
         {
             Form3 menuForm = new Form3();
-            menuForm.ReadCustomers(c);
             this.Hide();
             menuForm.Show();
         }
