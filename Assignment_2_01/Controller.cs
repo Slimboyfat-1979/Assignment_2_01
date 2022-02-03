@@ -10,8 +10,10 @@ namespace Assignment_2_01
     {
         //List to hold customers that are created
         public List<Customer> customerList = new List<Customer>();
+        Customer temp;
 
-        public void updateCustomerName(Customer c, string name)
+        /*
+        public void addTempCustomer(Customer c, string name)
         {
             if (customerList.Contains(c))
             {
@@ -22,5 +24,30 @@ namespace Assignment_2_01
                 
             }
         }
+
+        public double deposit(double balance, double value)
+        {
+            balance = balance + value;
+            return balance;
+        }
+
+        public double withdrawal(double value, double balance)
+        {
+            balance = balance - value;
+            return balance;
+        }
+
+        public bool failedWithdrawal(double value, double balance)
+        {
+            if(value > balance)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
