@@ -32,56 +32,132 @@ namespace Assignment_2_01
             int selection = comboBox1.SelectedIndex;
             if (selection == 0)
             {
-                label5.Text = "EveryDay Account: $" + customer.Balance;
+                label5.Text = "EveryDay Account: $" + String.Format("{0:0.00}", customer.eBalance);
             }
             else if (selection == 1)
             {
-                label5.Text = "You have selected Investment Account";
+                label5.Text = "Invesment Account: $" + String.Format("{0:0.00}", customer.iBalance);
             }
             else if(selection == 2)
             {
-                label5.Text = "You have selected Omni Account";
+                label5.Text = "Omni Account: $" + String.Format("{0:0.00}", customer.oBalance);
             }
         }
 
+        //Submit button for when the user selects an account type and transaction type
         private void button1_Click(object sender, EventArgs e)
         {
+            double balance;
             int selectedAccountType = comboBox1.SelectedIndex;
             int selectedTransactionType = comboBox2.SelectedIndex;
             double value = Convert.ToDouble(transactionValue.Text);
-            double balance = customer.Balance;
 
-            //Deposit
+            switch (selectedAccountType)
+            {
+                case 0:
+                    balance = customer.eBalance;
+                    break;
+                case 1:
+                    balance = customer.iBalance;
+                    break;
+                case 2:
+                    balance = customer.oBalance;
+                    break;
+                default:
+                    balance = -1;
+                    break;
+            }
+
+            //Deposits
             if(selectedTransactionType == 0)
             {
-                //Do stuff for Everyday account deposits
+                //Everyday account despoits
                 if(selectedAccountType == 0)
                 {
                     EverydayAccount account = new EverydayAccount(value, balance, selectedTransactionType);
-                    customer.Balance = account.Balance;
-                    label5.Text = "New Balance is " + customer.Balance;
-                    //label5.Text = "New Balance is " + account.Balance;
-                    //label5.Text = "New Balance is " + account.Balance;
+                    customer.eBalance = account.Balance;
+                    label5.Text = "New Balance is $" + Math.Round(customer.eBalance,2);
+                    
+                }
+                //Incvestment account deposits
+                if(selectedAccountType == 1)
+                {
+                    EverydayAccount account = new InvestmentAccount(value, balance, selectedTransactionType);
+                    customer.iBalance = account.Balance;
+                    label5.Text = "New Balance is $" + Math.Round(customer.iBalance,2);
+                }
+                //Omni account deposits
+                if(selectedAccountType == 2)
+                {
+                    EverydayAccount account = new OmniAccount(value, balance, selectedTransactionType);
+                    customer.oBalance = account.Balance;
+                    label5.Text = "New Balance is $" + Math.Round(customer.oBalance);
                 }
             }
-            //Withdrawal
+
+            //Withdrawals
             if(selectedTransactionType == 1)
             {
-                //Do stuff for everyday account withdrawals
+                //Everday account withdrawals
                 if(selectedAccountType == 0)
                 {
                     EverydayAccount account = new EverydayAccount(value, balance, selectedTransactionType);
+                    
+                    /*
                     if(account.failed == true)
                     {
-                        label5.Text = "You have insufficient funds in your account! " + customer.Balance;
+                        //throw new FailedWithdrawalException("You have insuffcient funds in your account \n Your balance is " + String.Format("{0:0.00}", customer.eBalance));
+                        label5.Text = "You have insufficient funds in your account! \n Your balance is $" + Math.Round(customer.eBalance, 2);
+                        
                     }
                     else
                     {
-                        customer.Balance = account.Balance;
-                        label5.Text = "New Balance is $" + customer.Balance;
+                        customer.eBalance = account.Balance;
+                        label5.Text = "New Balance is $" + Math.Round(customer.eBalance, 2);
+                    }
+                    */
+                }
+                //Investment account withdrawals
+                if(selectedAccountType == 1)
+                {
+                    EverydayAccount account = new InvestmentAccount(value, balance, selectedTransactionType);
+                    if(account.failed == true)
+                    {
+                        customer.iBalance = customer.iBalance - InvestmentAccount.failedFee;
+                        label5.Text = "You have insufficient funds in your account \n You have inccured a $10.00 fee \n Your account balance is now $" + Math.Round(customer.iBalance, 2);
+                    }
+                    else
+                    {
+                        customer.iBalance = account.Balance;
+                        label5.Text = "New Balance is $" + Math.Round(customer.iBalance, 2);
+                    }
+                }
+
+                //Omni account withdrawals
+                if(selectedAccountType == 2)
+                {
+                    EverydayAccount account = new OmniAccount(value, balance, selectedTransactionType);
+                    if(account.failed == true)
+                    {
+                        customer.oBalance = customer.oBalance - InvestmentAccount.failedFee;
+                        label5.Text = "You have insufficient funds in your account \n You have incurred a $10.00 fee \n Your account balance is now $" + Math.Round(customer.oBalance, 2);
+                    }
+                    else
+                    {
+                        customer.oBalance = account.Balance;
+                        label5.Text = "New Balance is $" + Math.Round(customer.oBalance, 2);
                     }
                 }
             }
+        }
+        //Back Biutton
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.DisplayCustomers();
+            form3.Show();
+            this.Hide();
+            
         }
     }
 }

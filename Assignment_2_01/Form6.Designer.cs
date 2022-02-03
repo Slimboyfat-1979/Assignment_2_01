@@ -104,7 +104,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(253, 487);
+            this.label5.Location = new System.Drawing.Point(304, 485);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 33);
             this.label5.TabIndex = 7;
@@ -140,6 +140,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "<= Back";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form6
             // 

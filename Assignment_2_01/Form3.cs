@@ -32,25 +32,7 @@ namespace Assignment_2_01
             return this;
         }
 
-        //Remember to put the data in the right location so that it can read the file, currently in root directory
-        public void ReadCustomers(Controller c)
-        {
-            Customer t = null;
-            string[] array;
-            var reader = new StreamReader("/Details.txt");
-            while (!reader.EndOfStream)
-            {
-                array = reader.ReadLine().Split(',');
-                string name = array[0];
-                double balance = Convert.ToDouble(array[1]);
-                t = new Customer(name, balance);
-                c.customerList.Add(t);
-            }
-
-            DisplayCustomers();
-           
-        }
-
+        //Button to add a new customer
         private void button1_Click(object sender, EventArgs e)
         {
             Form4 newCustomer = new Form4();
@@ -61,10 +43,10 @@ namespace Assignment_2_01
         public void DisplayCustomers()
         {
             customerListBox.Items.Clear();
-            customerListBox.Items.Add("ID\t Name\t\t Balance \n\n");
+            customerListBox.Items.Add("ID\t Name\t\t Everyday \t\t Investment \t Omni ");
             foreach(Customer c in control.customerList)
             {
-                customerListBox.Items.Add(c.getID() + "\t" + c.Name + "\t\t" + c.Balance);
+                customerListBox.Items.Add(c.getID() + "\t" + c.Name + "\t\t" + String.Format("{0:0.00}", c.eBalance) + "\t\t" + String.Format("{0:0.00}", c.iBalance,2) + "\t\t" + String.Format("{0:0.00}",c.oBalance));
                 
             }
             
@@ -74,7 +56,7 @@ namespace Assignment_2_01
         private void button2_Click(object sender, EventArgs e)
         {
             int selectedID = customerListBox.SelectedIndex;
-            Customer temp = control.customerList[selectedID];
+            Customer temp = control.customerList[selectedID-1];
            
             Form5 form5 = new Form5();
             form5.createTempCustomer(temp);
@@ -89,7 +71,7 @@ namespace Assignment_2_01
         {
             int selectedId = customerListBox.SelectedIndex;
             
-            Customer temp = control.customerList[selectedId];
+            Customer temp = control.customerList[selectedId-1];
             DialogResult dialogResult = MessageBox.Show("Would You Like To Remove Customer: " + temp.Name + "?", "Remove Customer?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -105,8 +87,8 @@ namespace Assignment_2_01
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Customer temp = control.customerList[customerListBox.SelectedIndex-1];
-            Form6 form6 = new Form6(temp.Name, temp); 
+            Customer temp = control.customerList[customerListBox.SelectedIndex - 1];
+            Form6 form6 = new Form6(temp.Name, temp);
             form6.Show();
             this.Hide();
         }

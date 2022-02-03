@@ -32,12 +32,13 @@
             this.customerListBox = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(290, 122);
+            this.button1.Location = new System.Drawing.Point(540, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 67);
             this.button1.TabIndex = 1;
@@ -51,13 +52,13 @@
             this.customerListBox.ItemHeight = 15;
             this.customerListBox.Location = new System.Drawing.Point(12, 122);
             this.customerListBox.Name = "customerListBox";
-            this.customerListBox.Size = new System.Drawing.Size(248, 319);
+            this.customerListBox.Size = new System.Drawing.Size(471, 319);
             this.customerListBox.TabIndex = 4;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(290, 250);
+            this.button2.Location = new System.Drawing.Point(540, 250);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(151, 67);
             this.button2.TabIndex = 5;
@@ -68,7 +69,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(290, 374);
+            this.button3.Location = new System.Drawing.Point(540, 374);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(151, 67);
             this.button3.TabIndex = 6;
@@ -76,11 +77,23 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button4.Location = new System.Drawing.Point(740, 232);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(188, 102);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Banking App";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 489);
+            this.ClientSize = new System.Drawing.Size(970, 489);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.customerListBox);
@@ -91,6 +104,7 @@
             this.Controls.SetChildIndex(this.customerListBox, 0);
             this.Controls.SetChildIndex(this.button2, 0);
             this.Controls.SetChildIndex(this.button3, 0);
+            this.Controls.SetChildIndex(this.button4, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +116,6 @@
         private System.Windows.Forms.ListBox customerListBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
